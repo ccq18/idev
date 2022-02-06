@@ -4,7 +4,7 @@ services:
   elasticsearch:
     container_name: '${COMPOSE_PROJECT_NAME}-elasticsearch'
     build:
-      context: app/elasticsearch/
+      context: elasticsearch/
       args:
         ELK_VERSION: $ELK_VERSION
     volumes:
@@ -25,7 +25,7 @@ services:
   logstash:
     container_name: '${COMPOSE_PROJECT_NAME}-logstash'
     build:
-      context: app/logstash/
+      context: logstash/
       args:
         ELK_VERSION: $ELK_VERSION
     volumes:
@@ -46,7 +46,7 @@ services:
   kibana:
     container_name: '${COMPOSE_PROJECT_NAME}-kibana'
     build:
-      context: app/kibana/
+      context: kibana/
       args:
         ELK_VERSION: $ELK_VERSION
     volumes:
