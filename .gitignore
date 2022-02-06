@@ -1,0 +1,9 @@
+/.env
+/.vscode
+/*/app/*/data/**
+/*/app/*/log/**
+/elk/app/elasticsearch/nodes/**
+
+/demo1
+/lnmp
+.DS_Store

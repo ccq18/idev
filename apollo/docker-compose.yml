@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  apollo-configservice:
+    container_name: apollo-configservice
+    image: apolloconfig/apollo-configservice:1.9.1
+    volumes:
+      - ./logs:/opt/logs
+    ports:
+      - "${CONFIG_PORT}:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://${DB_IP}:3306/${CONFIG_DB_NAME}?characterEncoding=utf8
+      - SPRING_DATASOURCE_USERNAME=${DB_USER}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
+    restart: always
+
+  apollo-adminservice:
+    depends_on:
+      - apollo-configservice
+    container_name: apollo-adminservice
+    image: apolloconfig/apollo-adminservice:1.9.1
+    volumes:
+      - ./logs:/opt/logs
+    ports:
+      - "${ADMIN_PORT}:8090"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://${DB_IP}:3306/${CONFIG_DB_NAME}?characterEncoding=utf8
+      - SPRING_DATASOURCE_USERNAME=${DB_USER}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
+    restart: always
+
+  apollo-portal:
+    depends_on:
+      - apollo-adminservice
+    container_name: apollo-portal
+    image: apolloconfig/apollo-portal:1.9.1
+    volumes:
+      - ./logs:/opt/logs
+    ports:
+      - "${PORTAL_PORT}:8070"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://${DB_IP}:3306/${PORTAL_DB_NAME}?characterEncoding=utf8
+      - SPRING_DATASOURCE_USERNAME=${DB_USER}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
+      - APOLLO_PORTAL_ENVS=dev
+      - DEV_META=${DEV_META}
+    restart: always
+
+

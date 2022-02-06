@@ -1,0 +1,53 @@
+version: '3.2'
+
+services:
+  elasticsearch:
+    container_name: '${COMPOSE_PROJECT_NAME}-elasticsearch'
+    build:
+      context: app/elasticsearch/
+      args:
+        ELK_VERSION: $ELK_VERSION
+    volumes:
+      - ./app/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro,z
+      - ./app/elasticsearch:/usr/share/elasticsearch/data:z
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      ELASTIC_PASSWORD: changeme
+      # Use single node discovery in order to disable production mode and avoid bootstrap checks.
+      # see: https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
+      discovery.type: single-node
+
+  logstash:
+    container_name: '${COMPOSE_PROJECT_NAME}-logstash'
+    build:
+      context: app/logstash/
+      args:
+        ELK_VERSION: $ELK_VERSION
+    volumes:
+      - ./app/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro,z
+      - ./app/logstash/pipeline:/usr/share/logstash/pipeline:ro,z
+    ports:
+      - "5044:5044"
+      - "5000:5000/tcp"
+      - "5000:5000/udp"
+      - "9600:9600"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+    depends_on:
+      - elasticsearch
+
+  kibana:
+    container_name: '${COMPOSE_PROJECT_NAME}-kibana'
+    build:
+      context: app/kibana/
+      args:
+        ELK_VERSION: $ELK_VERSION
+    volumes:
+      - ./app/kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml:ro,z
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
