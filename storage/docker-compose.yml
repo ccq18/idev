@@ -1,5 +1,4 @@
 version: "3"
-
 services:
   mysql:
     build:
@@ -117,6 +116,18 @@ services:
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
     volumes:
       - ./app/kafka/data:/var/lib/kafka/data
+    networks:
+      - storage
+  mongo:
+    image: mongo:5.0.6
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - 27017:27017
+    volumes:
+      - ./app/mongo/data:/data/db
     networks:
       - storage
 networks:
