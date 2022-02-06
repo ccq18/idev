@@ -25,9 +25,10 @@ docker-compose version 1.29.2, build 5becea4c
 需要 设置HOST_IP
 mac/weindows 下
 export HOST_IP=host.docker.internal
-linux下 为ip addr show docker0 对应的ip
+linux下 为ip addr show docker0 对应的ip(以下命令在ubuntu 20.4有效，无效可以手动设置)
 /etc/bash.bashrc 
-export HOST_IP=
+export HOST_IP=$(ifconfig|grep -A 5 docker0|grep netmask|awk '{print $2}')
+
 
 为了避免权限问题 先初始化权限
 chmod -R 777 ./
