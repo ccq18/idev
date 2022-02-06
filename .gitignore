@@ -5,7 +5,7 @@
 /*/*/data/**
 /*/*/log/**
 /elk/app/elasticsearch/nodes/**
-
+/nacos/cluster-logs/**
 /demo1
 /lnmp
 .DS_Store

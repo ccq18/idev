@@ -52,12 +52,7 @@ docker stop myrunoob
 重启容器myrunoob
 docker restart myrunoob
 
-删除所有已经停止的容器：
-docker rm $(docker ps -a -q)
-查看占用
-docker system df
-清理
-docker system prune -a
+
 容器查看命令 元数据、端口、日志、top进程信息
 docker inspect mysql:5.6
 docker port mymysql
@@ -82,3 +77,10 @@ docker pull java
 docker push myapache:v1
 docker search  java
 
+## 清理
+删除所有已经停止的容器：
+docker rm $(docker ps -a -q)
+查看占用
+docker system df
+清理所有
+docker system prune -a
