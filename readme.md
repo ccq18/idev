@@ -2,15 +2,17 @@
 当前为测试版，你可以在测试环境下使用，但后续升级可能会导致测试数据丢失  
 idev是测试环境设计快速开发设计的环境集合，简化本地各种环境配置部署。目前以下所有功能都是为单机设计的，生产环境请谨慎使用。。  
 支持
-- php
 - mysql
 - redis
 - postgres sql
+- mongodb
 - apollo
 - xxljob
 - elk
 - rocketmq
 - kafka
+- elasticsearch
+- php
 根据以往经验，存储的依赖其实是可以多个项目共享的，比如：kafka mysql redis postgres，xxljob,apollo,注册中心等。  
 你的应用环境可以使用本机的，也可以使用idev中的应用环境。数据库和消息等使用idev中的配置就好 
 
