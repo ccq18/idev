@@ -4,7 +4,7 @@ services:
     image: confluentinc/cp-zookeeper:5.4.1
     hostname: zookeeper
     restart: always
-    container_name: '${COMPOSE_PROJECT_NAME}-zookeeper'
+    container_name: '${PROJECT_NAME}-zookeeper'
     ports:
       - "2181:2181"
     environment:
@@ -20,7 +20,7 @@ services:
     image: confluentinc/cp-kafka:5.4.1
     hostname: kafka
     restart: always
-    container_name: '${COMPOSE_PROJECT_NAME}-kafka'
+    container_name: '${PROJECT_NAME}-kafka'
     depends_on:
       - zookeeper
     ports:

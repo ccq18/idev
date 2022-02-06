@@ -3,7 +3,7 @@ services:
   mysql:
     build:
       context: "./app/${MYSQL}"
-    container_name: '${COMPOSE_PROJECT_NAME}-${MYSQL}'
+    container_name: '${PROJECT_NAME}-${MYSQL}'
     restart: 'always'
     ports:
       - "${HOST_MACHINE_MYSQL_PORT}:3306"
@@ -21,7 +21,7 @@ services:
       - storage
 
   redis:
-    container_name: '${COMPOSE_PROJECT_NAME}-redis'
+    container_name: '${PROJECT_NAME}-redis'
     image: redis:latest
     volumes:
       - ./app/redis/data:/data
@@ -35,7 +35,7 @@ services:
   phpmyadmin:
     build:
       context: "./app/phpmyadmin"
-    container_name: '${COMPOSE_PROJECT_NAME}-phpmyadmin'
+    container_name: '${PROJECT_NAME}-phpmyadmin'
     environment:
       PMA_HOST: ${HOST_IP}
       PMA_PORT: ${HOST_MACHINE_MYSQL_PORT}
@@ -56,7 +56,7 @@ services:
 
   phpredisadmin:
     image: erikdubbelboer/phpredisadmin
-    container_name: '${COMPOSE_PROJECT_NAME}-phpredisadmin'
+    container_name: '${PROJECT_NAME}-phpredisadmin'
     environment:
       REDIS_1_HOST: ${REDIS_1_HOST}
       REDIS_1_NAME: MyRedis
@@ -81,44 +81,8 @@ services:
       - ./app/postgres/data:/var/lib/postgresql/data
     networks:
       - storage
-
-  zookeeper:
-    image: confluentinc/cp-zookeeper:5.4.1
-    hostname: zookeeper
-    restart: always
-    container_name: '${COMPOSE_PROJECT_NAME}-zookeeper'
-    ports:
-      - "2181:2181"
-    environment:
-      ZOO_MY_ID: 1  # 节点ID
-      ZOOKEEPER_CLIENT_PORT: 2181
-      ZOOKEEPER_TICK_TIME: 2000
-    volumes:
-      - ./app/zookeeper/data:/var/lib/zookeeper/data
-      - ./app/zookeeper/log:/var/lib/zookeeper/log
-    networks:
-      - storage
-  kafka:
-    image: confluentinc/cp-kafka:5.4.1
-    hostname: kafka
-    restart: always
-    container_name: '${COMPOSE_PROJECT_NAME}-kafka'
-    depends_on:
-      - zookeeper
-    ports:
-      - "9092:9092"
-    environment:
-      KAFKA_BROKER_ID: 1
-      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
-    volumes:
-      - ./app/kafka/data:/var/lib/kafka/data
-    networks:
-      - storage
   mongo:
+    container_name: '${PROJECT_NAME}-mongo'
     image: mongo:5.0.6
     restart: always
     environment:

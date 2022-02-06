@@ -2,7 +2,7 @@ version: '3'
 
 services:
   apollo-configservice:
-    container_name: apollo-configservice
+    container_name: '${PROJECT_NAME}-apollo-configservice'
     image: apolloconfig/apollo-configservice:1.9.1
     volumes:
       - ./logs:/opt/logs
@@ -18,7 +18,7 @@ services:
   apollo-adminservice:
     depends_on:
       - apollo-configservice
-    container_name: apollo-adminservice
+    container_name: '${PROJECT_NAME}-apollo-adminservice'
     image: apolloconfig/apollo-adminservice:1.9.1
     volumes:
       - ./logs:/opt/logs
@@ -34,7 +34,7 @@ services:
   apollo-portal:
     depends_on:
       - apollo-adminservice
-    container_name: apollo-portal
+    container_name: '${PROJECT_NAME}-apollo-portal'
     image: apolloconfig/apollo-portal:1.9.1
     volumes:
       - ./logs:/opt/logs

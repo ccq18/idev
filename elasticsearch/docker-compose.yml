@@ -2,7 +2,7 @@ version: '3.2'
 
 services:
   elasticsearch:
-    container_name: '${COMPOSE_PROJECT_NAME}-elasticsearch'
+    container_name: '${PROJECT_NAME}-elasticsearch'
     build:
       context: elasticsearch/
       args:

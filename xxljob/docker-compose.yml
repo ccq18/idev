@@ -2,7 +2,7 @@ version: '3'
 services:
   xxljob:
     image: docker.io/xuxueli/xxl-job-admin:2.1.2
-    container_name: xxljob01
+    container_name: '${PROJECT_NAME}-xxljob'
     ports:
       - "8090:8080"
       - "8099:9999"
