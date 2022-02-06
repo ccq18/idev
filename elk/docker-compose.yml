@@ -19,6 +19,8 @@ services:
       # Use single node discovery in order to disable production mode and avoid bootstrap checks.
       # see: https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
       discovery.type: single-node
+    networks:
+      - elk
 
   logstash:
     container_name: '${COMPOSE_PROJECT_NAME}-logstash'
@@ -38,6 +40,8 @@ services:
       LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     depends_on:
       - elasticsearch
+    networks:
+      - elk
 
   kibana:
     container_name: '${COMPOSE_PROJECT_NAME}-kibana'
@@ -51,3 +55,9 @@ services:
       - "5601:5601"
     depends_on:
       - elasticsearch
+    networks:
+      - elk
+
+networks:
+  elk:
+    driver: bridge

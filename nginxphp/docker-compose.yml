@@ -1,26 +1,38 @@
 version: '3'
 services:
-    web:
-        image: nginx
-        volumes:
-            - ./app/php/conf/nginx/default.conf:/etc/nginx/conf.d/default.conf
-            - ${DOCUMENT_ROOT}:/var/www/html
-            - ${LOG_DIR}:/var/log/nginx
+  web:
+    image: nginx
+    volumes:
+      - ./app/php/conf/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ${DOCUMENT_ROOT}:/var/www/html
+      - ${LOG_DIR}:/var/log/nginx
 
-        ports:
-            - ${HOST_PORT}:80
-        restart: always
-        depends_on:
-            - php
-    php:
-        build: app/php
-        restart: always
-        volumes:
-            - ./app/php/conf/php/php.ini:/usr/local/etc/php/conf.d/php.ini
-            - ./app/php/conf/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
-            - ${DOCUMENT_ROOT}:/var/www/html
-    composer:
-        image: composer
-        volumes:
-            - .:/app
-        command: install
+    ports:
+      - ${HOST_PORT}:80
+    restart: always
+    depends_on:
+      - php
+    networks:
+      - nginxphp
+
+  php:
+    build: app/php
+    restart: always
+    volumes:
+      - ./app/php/conf/php/php.ini:/usr/local/etc/php/conf.d/php.ini
+      - ./app/php/conf/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+      - ${DOCUMENT_ROOT}:/var/www/html
+    networks:
+      - nginxphp
+
+  composer:
+    image: composer
+    volumes:
+      - .:/app
+    command: install
+    networks:
+      - nginxphp
+
+networks:
+  nginxphp:
+    driver: bridge
