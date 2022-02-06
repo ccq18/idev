@@ -23,5 +23,5 @@ services:
       - elasticsearch
 
 networks:
-  elk:
+  elasticsearch:
     driver: bridge
