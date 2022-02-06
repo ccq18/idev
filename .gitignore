@@ -2,6 +2,8 @@
 /.vscode
 /*/app/*/data/**
 /*/app/*/log/**
+/*/*/data/**
+/*/*/log/**
 /elk/app/elasticsearch/nodes/**
 
 /demo1

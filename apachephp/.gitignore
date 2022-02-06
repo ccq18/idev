@@ -1,5 +1,0 @@
-/.env
-/.vscode
-/app/*/data/**
-/app/*/log/**
-.DS_Store
