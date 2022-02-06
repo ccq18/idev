@@ -1,11 +1,17 @@
 # 介绍
-这是个docker compose 的集合，简化本地各种环境配置部署。支持
-db:kafka mysql redis postgres 
-elk:elasticsearch, elk
-apachephp:apache +php
-nginxphp:nginx +php
+idev是测试环境设计快速开发设计的环境集合，简化本地各种环境配置部署。目前以下所有功能都是为单机设计的，生产环境请谨慎使用。。
+支持
+- php
+- mysql
+- redis
+- postgres sql
+- apollo
+- xxljob
+- elk
+- rocketmq
+- kafka
 根据以往经验，存储的依赖其实是可以多个项目共享的，比如：kafka mysql redis postgres，xxljob,apollo,注册中心等。
-因此本项目将应用的运行环境和存储分开，只需要一个环境准备个公用的存储就好了，应用直接通过本地王霖端口访问存储，应用的执行环境可以很干净，可以做到和生产的一致。
+你的应用环境可以使用本机的，也可以使用idev中的应用环境。数据库和消息等使用idev中的配置就好
 # 基本操作
 ```
 docker-compose up -d  //相当于pull+build+start
