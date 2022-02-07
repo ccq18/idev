@@ -44,8 +44,7 @@ export HOST_IP=host.docker.internal
 linux下 为ip addr show docker0 对应的ip(以下命令在ubuntu 20.4有效，无效可以手动设置)
 /etc/bash.bashrc 
 export HOST_IP=$(ifconfig|grep -A 5 docker0|grep netmask|awk '{print $2}')
-为了避免权限问题 先初始化权限
-chmod -R 777 ./
+
 ```
 3. 配置项目下的.env,目前每个模块下都准备了sample.env 重命名为.env即可使用 以下脚本可以一键复制sample.env 为.env文件
 ```
@@ -53,6 +52,8 @@ sh initenv.sh
 ```
 4. 启动  可以去各个目录下执行 docker-compose up -d，也可以使用以下脚本一键启动所有容器（除应用环境容器java，php等），建议根据自己需要修改
 ```
+为了避免权限问题 先初始化权限
+chmod -R 777 ./
 sh start.sh
 ```
 # server
