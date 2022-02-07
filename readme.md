@@ -1,22 +1,9 @@
 # 介绍
-当前为测试版，你可以在测试环境下使用，但后续升级可能会导致测试数据丢失  
-idev是测试环境设计快速开发设计的环境集合，简化本地各种环境配置部署。目前以下所有功能都是为单机设计的，生产环境请谨慎使用。。  
-支持
-- mysql
-- redis
-- postgres sql
-- mongodb
-- apollo
-- xxljob
-- elk
-- rocketmq
-- kafka
-- elasticsearch
-- php
-
-根据以往经验，存储的依赖其实是可以多个项目共享的，比如：kafka mysql redis postgres，xxljob,apollo,注册中心等。  
-你的应用环境可以使用本机的，也可以使用idev中的应用环境。数据库和消息等使用idev中的配置就好 
-
+idev是一个docker-compose 集合，支持apollo  elk  kafka  mongo mysql nacos  postgres redis rocketmq  xxljob，php,java的一键部署。
+专门为测试环境快速开发设计，简化本地各种环境配置部署。 
+我将容器环境分为应用运行环境和外部依赖两个部分。
+应用运行环境专为应用定制，如php,java等，你可以拷贝应用环境到自己的应用中按需修改。
+而外部依赖如redis,mysql等这些通常一个环境公用一个就好了，不需要每个应用单独起一个，这样可以简化新项目起环境的配置。
 # 使用
 
 1. 安装docker-compose
