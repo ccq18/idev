@@ -14,7 +14,7 @@ services:
     restart: always
     networks:
       - nacos
-      
+
   nacos2:
     hostname: nacos2
     image: nacos/nacos-server:${NACOS_VERSION}
