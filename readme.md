@@ -38,8 +38,7 @@ https://github.com/docker/compose/releases
 
 2. 环境参数
 ```
-为解决不同环境下host.docker.internal  兼容问题
-需要 设置HOST_IP
+为解决不同环境下host.docker.internal  兼容问题需要添加一个名为HOST_IP的环境变量
 mac/weindows 下
 export HOST_IP=host.docker.internal
 linux下 为ip addr show docker0 对应的ip(以下命令在ubuntu 20.4有效，无效可以手动设置)
