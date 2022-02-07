@@ -8,3 +8,4 @@
 /demo1
 /lnmp
 .DS_Store
+.env
