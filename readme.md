@@ -63,7 +63,7 @@ chmod -R 777 ./
 ```
 cd storage
 docker-compose up -d 
-打开db工具导入xxljob/xxljob.sql apollo/apolloconfigdb.sql,apollo/apolloportaldb.sql
+打开db工具导入xxljob/xxljob1.sql apollo/apolloconfigdb.sql,apollo/apolloportaldb.sql
 ```
 # server
 ## phpmyadmin
