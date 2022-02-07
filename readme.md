@@ -86,7 +86,15 @@ http://127.0.0.1:8099/xxl-job-admin/toLogin
 admin 123456
 
 
-# 调试辅助命令（忽略）
+# 调试辅助命令（忽略） 
+## 停止所有容器
+docker stop $(docker ps -a -q)
+删除所有已经停止的容器：
+docker rm $(docker ps -a -q)
+查看占用
+docker system df
+清理所有
+docker system prune -a
 ## install ping
 ```
 brew install telnet
