@@ -28,9 +28,8 @@ docker-compose rm -f
 docker-compose ps
 ```
 # 初始化
-- 在以下版本正常工作
 
-- 安装docker-compose
+1. 安装docker-compose
 ```
 ubuntu:
 snap install docker
@@ -47,7 +46,7 @@ windows：
 https://github.com/docker/compose/releases
 ```
 
-- 环境参数
+2. 环境参数
 ```
 为解决不同环境下host.docker.internal  兼容问题
 需要 设置HOST_IP
@@ -59,12 +58,13 @@ export HOST_IP=$(ifconfig|grep -A 5 docker0|grep netmask|awk '{print $2}')
 为了避免权限问题 先初始化权限
 chmod -R 777 ./
 ```
-- 配置项目下的.env,目前每个模块下都准备了sample.env 重命名为.env即可使用
-- 启动
+3. 配置项目下的.env,目前每个模块下都准备了sample.env 重命名为.env即可使用 以下脚本可以一键复制sample.env 为.env文件
 ```
-cd storage
-docker-compose up -d 
-打开db工具导入xxljob/xxljob1.sql apollo/apolloconfigdb.sql,apollo/apolloportaldb.sql
+sh initenv.sh
+```
+4. 启动  可以去各个目录下执行 docker-compose up -d，也可以使用以下脚本一键启动所有容器（除应用环境容器java，php等），建议根据自己需要修改
+```
+sh start.sh
 ```
 # server
 ## phpmyadmin
