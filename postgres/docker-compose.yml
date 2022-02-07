@@ -13,20 +13,7 @@ services:
       - ./postgres/initdb/:/docker-entrypoint-initdb.d/
       - ./postgres/data:/var/lib/postgresql/data
     networks:
-      - storage
-  mongo:
-    container_name: '${PROJECT_NAME}-mongo'
-    image: mongo:5.0.6
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-    ports:
-      - 27017:27017
-    volumes:
-      - ./mongo/data:/data/db
-    networks:
-      - storage
+      - postgres
 networks:
   storage:
-    driver: bridge
+    driver: postgres
