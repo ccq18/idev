@@ -17,17 +17,7 @@ idev是测试环境设计快速开发设计的环境集合，简化本地各种�
 根据以往经验，存储的依赖其实是可以多个项目共享的，比如：kafka mysql redis postgres，xxljob,apollo,注册中心等。  
 你的应用环境可以使用本机的，也可以使用idev中的应用环境。数据库和消息等使用idev中的配置就好 
 
-# 基本操作
-```
-docker-compose up -d  //相当于pull+build+start
-docker-compose build
-docker-compose pull
-docker-compose start
-docker-compose stop
-docker-compose rm -f
-docker-compose ps
-```
-# 初始化
+# 使用
 
 1. 安装docker-compose
 ```
