@@ -15,5 +15,5 @@ services:
     networks:
       - postgres
 networks:
-  storage:
-    driver: postgres
+  postgres:
+    driver: bridge

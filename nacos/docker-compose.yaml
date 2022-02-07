@@ -12,9 +12,9 @@ services:
       - "9848:9848"
       - "9555:9555"
     restart: always
-    depends_on:
-      - mysql
-
+    networks:
+      - nacos
+      
   nacos2:
     hostname: nacos2
     image: nacos/nacos-server:${NACOS_VERSION}
@@ -26,8 +26,9 @@ services:
       - "8849:8848"
       - "9849:9848"
     restart: always
-    depends_on:
-      - mysql
+    networks:
+      - nacos
+
   nacos3:
     hostname: nacos3
     image: nacos/nacos-server:${NACOS_VERSION}
@@ -39,8 +40,11 @@ services:
       - "8850:8848"
       - "9850:9848"
     restart: always
-    depends_on:
-      - mysql
+    networks:
+      - nacos
+networks:
+  nacos:
+    driver: bridge
 #  mysql:
 #    container_name: mysql
 #    image: nacos/nacos-mysql:5.7
