@@ -1,11 +1,16 @@
 # 介绍
-idev是一个docker-compose 集合，支持apollo  elk  kafka  mongo mysql nacos  postgres redis rocketmq  xxljob，php,java的一键部署。
-专门为测试环境快速开发设计，简化本地各种环境配置部署。 
-我将容器环境分为应用运行环境和外部依赖两个部分。
-应用运行环境专为应用定制，如php,java等，你可以拷贝应用环境到自己的应用中按需修改。
-而外部依赖如redis,mysql等这些通常一个环境公用一个就好了，不需要每个应用单独起一个，这样可以简化新项目起环境的配置。
+idev是一个docker-compose 集合，支持apollo  elk  kafka  mongo mysql nacos  postgres redis rocketmq  xxljob，php,java的一键部署。  
+专门为测试环境快速开发设计，简化本地各种环境配置部署。   
+我将容器环境分为应用运行环境和外部依赖两个部分。 
+外部依赖如redis,mysql等这些通常一个环境公用一个就好了，不需要每个应用单独起一个，这样可以简化新项目起环境的配置。  
+应用运行环境专为应用定制，如php,java等，你可以拷贝应用环境到自己的应用中按需修改。  
 # 使用
-
+0.由于总所周知的原因，你在国内使用docker很可能会遇到网络问题，因此我建议你在开始一切之前先设置镜像加速。    
+如果你遇到问题，以下链接可能可以帮助到你。  
+镜像加速：[https://www.runoob.com/docker/docker-mirror-acceleration.html](https://www.runoob.com/docker/docker-mirror-acceleration.html)  
+docker 问题解决：
+- [https://yeasy.gitbook.io/docker_practice/appendix/faq](https://yeasy.gitbook.io/docker_practice/appendix/faq)
+- [https://walkingsun.github.io/WindBlog/2019/01/18/docker_question/#bash-ps-command-not-found](https://walkingsun.github.io/WindBlog/2019/01/18/docker_question/#bash-ps-command-not-found)
 1. 安装docker-compose
 ```
 ubuntu:
