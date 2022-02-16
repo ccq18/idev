@@ -6,3 +6,8 @@
 - apollo
 - xxljob
 - mongodb
+
+```
+env=dev
+spring.profiles.active=dev
+```
