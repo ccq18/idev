@@ -11,9 +11,23 @@ idev是一个docker-compose 集合，支持apollo  elk  kafka  mongo mysql nacos
 docker 问题解决：
 - [https://yeasy.gitbook.io/docker_practice/appendix/faq](https://yeasy.gitbook.io/docker_practice/appendix/faq)
 - [https://walkingsun.github.io/WindBlog/2019/01/18/docker_question/#bash-ps-command-not-found](https://walkingsun.github.io/WindBlog/2019/01/18/docker_question/#bash-ps-command-not-found)
-1. 安装docker
-目前最新的docker 已经包含了docker-compose，因此不需要使用docker-compose 对应命令注意是'''docker-compose''' 
+git clone git@github.com:ccq18/idev.git
+2. 安装docker-compose
+```
+ubuntu:
+snap install docker
+sudo curl -L https://get.daocloud.io/docker/compose/releases/download/1.29.2/docker-compose-`uname -s`-`uname -m` -o /usr/bin/docker-compose
+sudo chmod +x /usr/bin/docker-compose
 
+macos：
+下载app 安装docker 
+sudo curl -L https://get.daocloud.io/docker/compose/releases/download/1.29.2/docker-compose-`uname -s`-`uname -m` -o /usr/bin/docker-compose
+sudo chmod +x /usr/bin/docker-compose
+
+windows：
+下载app 安装docker 
+https://github.com/docker/compose/releases
+```
 2. 环境参数
 ```
 为解决不同环境下host.docker.internal  兼容问题需要添加一个名为HOST_IP的环境变量

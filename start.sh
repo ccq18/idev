@@ -8,3 +8,5 @@ cd $projectname;
 docker-compose up -d;
 )
 done
+
+
