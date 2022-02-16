@@ -134,7 +134,7 @@ Older major versions are also supported on separate branches:
 Clone this repository onto the Docker host that will run the stack, then start services locally using Docker Compose:
 
 ```console
-$ docker-compose up
+$ docker compose up
 ```
 
 You can also run all services in the background (detached mode) by adding the `-d` flag to the above command.
@@ -151,7 +151,7 @@ Elasticsearch data is persisted inside a volume by default.
 In order to entirely shutdown the stack and remove all persisted data, use the following Docker Compose command:
 
 ```console
-$ docker-compose down -v
+$ docker compose down -v
 ```
 
 ## Initial setup
@@ -171,7 +171,7 @@ users][builtin-users] instead for increased security.
 1. Initialize passwords for built-in users
 
     ```console
-    $ docker-compose exec -T elasticsearch bin/elasticsearch-setup-passwords auto --batch
+    $ docker compose exec -T elasticsearch bin/elasticsearch-setup-passwords auto --batch
     ```
 
     Passwords for all 6 built-in users will be randomly generated. Take note of them.
@@ -198,7 +198,7 @@ users][builtin-users] instead for increased security.
 1. Restart Kibana and Logstash to apply changes
 
     ```console
-    $ docker-compose restart kibana logstash
+    $ docker compose restart kibana logstash
     ```
 
     *:information_source: Learn more about the security of the Elastic stack at [Secure the Elastic
@@ -333,7 +333,7 @@ To add plugins to any ELK component you have to:
 
 1. Add a `RUN` statement to the corresponding `Dockerfile` (eg. `RUN logstash-plugin install logstash-filter-json`)
 1. Add the associated plugin code configuration to the service configuration (eg. Logstash input/output)
-1. Rebuild the images using the `docker-compose build` command
+1. Rebuild the images using the `docker compose build` command
 
 ### How to enable the provided extensions
 
