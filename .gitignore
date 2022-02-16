@@ -9,3 +9,4 @@
 /lnmp
 .DS_Store
 .env
+apollo/logs
