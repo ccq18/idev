@@ -59,7 +59,7 @@ xpack.security.authc.api_key.enabled: true
 
 ### Start the server
 
-To include Enterprise Search in the stack, run Docker Compose from the root of the repository with an additional command
+To include Enterprise Search in the stack, run docker-compose from the root of the repository with an additional command
 line argument referencing the `enterprise-search-compose.yml` file:
 
 ```console

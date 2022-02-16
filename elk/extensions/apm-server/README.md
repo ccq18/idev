@@ -5,7 +5,7 @@ Kibana.
 
 ## Usage
 
-To include APM Server in the stack, run Docker Compose from the root of the repository with an additional command line
+To include APM Server in the stack, run docker-compose from the root of the repository with an additional command line
 argument referencing the `apm-server-compose.yml` file:
 
 ```console

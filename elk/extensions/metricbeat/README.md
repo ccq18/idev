@@ -6,7 +6,7 @@ and ships them to the output that you specify, such as Elasticsearch or Logstash
 
 ## Usage
 
-To include Metricbeat in the stack, run Docker Compose from the root of the repository with an additional command line
+To include Metricbeat in the stack, run docker-compose from the root of the repository with an additional command line
 argument referencing the `metricbeat-compose.yml` file:
 
 ```console

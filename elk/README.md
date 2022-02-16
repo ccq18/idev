@@ -6,7 +6,7 @@
 [![Build Status](https://github.com/deviantony/docker-elk/workflows/CI/badge.svg?branch=main)](https://github.com/deviantony/docker-elk/actions?query=workflow%3ACI+branch%3Amain)
 [![Join the chat at https://gitter.im/deviantony/docker-elk](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/deviantony/docker-elk?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Run the latest version of the [Elastic stack][elk-stack] with Docker and Docker Compose.
+Run the latest version of the [Elastic stack][elk-stack] with Docker and docker-compose.
 
 It gives you the ability to analyze any data set by using the searching/aggregation capabilities of Elasticsearch and
 the visualization power of Kibana.
@@ -79,7 +79,7 @@ own_. [sherifabdlnaby/elastdocker][elastdocker] is one example among others of p
 ### Host setup
 
 * [Docker Engine](https://docs.docker.com/install/) version **17.05** or newer
-* [Docker Compose](https://docs.docker.com/compose/install/) version **1.20.0** or newer
+* [docker-compose](https://docs.docker.com/compose/install/) version **1.20.0** or newer
 * 1.5 GB of RAM
 
 *:information_source: Especially on Linux, make sure your user has the [required permissions][linux-postinstall] to
@@ -131,10 +131,10 @@ Older major versions are also supported on separate branches:
 
 ### Bringing up the stack
 
-Clone this repository onto the Docker host that will run the stack, then start services locally using Docker Compose:
+Clone this repository onto the Docker host that will run the stack, then start services locally using docker-compose:
 
 ```console
-$ docker compose up
+$ docker-compose up
 ```
 
 You can also run all services in the background (detached mode) by adding the `-d` flag to the above command.
@@ -148,10 +148,10 @@ If you are starting the stack for the very first time, please read the section b
 
 Elasticsearch data is persisted inside a volume by default.
 
-In order to entirely shutdown the stack and remove all persisted data, use the following Docker Compose command:
+In order to entirely shutdown the stack and remove all persisted data, use the following docker-compose command:
 
 ```console
-$ docker compose down -v
+$ docker-compose down -v
 ```
 
 ## Initial setup
@@ -171,7 +171,7 @@ users][builtin-users] instead for increased security.
 1. Initialize passwords for built-in users
 
     ```console
-    $ docker compose exec -T elasticsearch bin/elasticsearch-setup-passwords auto --batch
+    $ docker-compose exec -T elasticsearch bin/elasticsearch-setup-passwords auto --batch
     ```
 
     Passwords for all 6 built-in users will be randomly generated. Take note of them.
@@ -198,7 +198,7 @@ users][builtin-users] instead for increased security.
 1. Restart Kibana and Logstash to apply changes
 
     ```console
-    $ docker compose restart kibana logstash
+    $ docker-compose restart kibana logstash
     ```
 
     *:information_source: Learn more about the security of the Elastic stack at [Secure the Elastic
@@ -333,7 +333,7 @@ To add plugins to any ELK component you have to:
 
 1. Add a `RUN` statement to the corresponding `Dockerfile` (eg. `RUN logstash-plugin install logstash-filter-json`)
 1. Add the associated plugin code configuration to the service configuration (eg. Logstash input/output)
-1. Rebuild the images using the `docker compose build` command
+1. Rebuild the images using the `docker-compose build` command
 
 ### How to enable the provided extensions
 
