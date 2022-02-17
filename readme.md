@@ -59,11 +59,14 @@ http://localhost:9902/
 http://127.0.0.1:5601/
 user => "elastic"
 password => "changeme"
-## apache php
-http://localhost:80
+
+## apollo
+http://localhost:9170
+meta:http://localhost:9180
+用户名：apollo
+密码：admin
 ## nginx php
 http://localhost:801
-
 ## xxljob
 http://127.0.0.1:8099/xxl-job-admin/toLogin
 admin 123456

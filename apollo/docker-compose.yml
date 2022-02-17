@@ -12,6 +12,8 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:mysql://${DB_IP}:3306/${CONFIG_DB_NAME}?characterEncoding=utf8
       - SPRING_DATASOURCE_USERNAME=${DB_USER}
       - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
+      - EUREKA_INSTANCE_HOME_PAGE_URL=http://${HOSTIP}:${CONFIG_PORT}
+      - EUREKA_INSTANCE_PREFER_IP_ADDRESS=false
     restart: always
     networks:
       - apollo
@@ -28,6 +30,8 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:mysql://${DB_IP}:3306/${CONFIG_DB_NAME}?characterEncoding=utf8
       - SPRING_DATASOURCE_USERNAME=${DB_USER}
       - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
+      - EUREKA_INSTANCE_HOME_PAGE_URL=http://${HOSTIP}:${ADMIN_PORT}
+      - EUREKA_INSTANCE_PREFER_IP_ADDRESS=false
     restart: always
     networks:
       - apollo
@@ -46,6 +50,9 @@ services:
       - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
       - APOLLO_PORTAL_ENVS=dev
       - DEV_META=${DEV_META}
+      - EUREKA_INSTANCE_HOME_PAGE_URL=http://${HOSTIP}:${PORTAL_PORT}
+      - EUREKA_INSTANCE_PREFER_IP_ADDRESS=false
+
     restart: always
     networks:
       - apollo
