@@ -9,7 +9,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>kafka</artifactId>
+  <artifactId>dashboard</artifactId>
 
   <properties>
     <maven.compiler.source>8</maven.compiler.source>
@@ -41,22 +41,19 @@
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
     </dependency>
+
+    <!--    -->
+    <!-- 实现对 Actuator 的自动化配置 -->
     <dependency>
-      <groupId>org.apache.kafka</groupId>
-      <artifactId>kafka_2.12</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.kafka</groupId>
-      <artifactId>spring-kafka</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
 
-<!--    apollo-->
+    <!-- Micrometer 对 Prometheus 的支持 -->
     <dependency>
-      <groupId>com.ctrip.framework.apollo</groupId>
-      <artifactId>apollo-client</artifactId>
+      <groupId>io.micrometer</groupId>
+      <artifactId>micrometer-registry-prometheus</artifactId>
     </dependency>
-
   </dependencies>
 
 </project>

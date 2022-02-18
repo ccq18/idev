@@ -1,6 +1,6 @@
-package demo.mq.producer;
+package kafka.mq.producer;
 
-import demo.mq.message.Demo06Message;
+import kafka.mq.message.Demo06Message;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;

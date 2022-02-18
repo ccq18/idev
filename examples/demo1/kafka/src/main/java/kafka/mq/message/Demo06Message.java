@@ -1,4 +1,4 @@
-package demo.mq.message;
+package kafka.mq.message;
 
 /**
  * 示例 06 的 Message 消息

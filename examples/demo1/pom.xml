@@ -4,7 +4,9 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <modules>
+    <module>dashboard</module>
     <module>kafka</module>
+
   </modules>
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -21,7 +23,7 @@
   <groupId>com.example</groupId>
   <artifactId>demo</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>demo</name>
+  <name>kafka</name>
   <packaging>pom</packaging>
   <description>Demo project for Spring Boot</description>
   <dependencies>
@@ -72,7 +74,7 @@
         </executions>
 
         <configuration>
-          <mainClass>com.example.demo.DemoApplication</mainClass>
+          <mainClass>com.example.kafka.DemoApplication</mainClass>
         </configuration>
 
       </plugin>
