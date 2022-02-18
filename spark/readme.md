@@ -1,18 +1,18 @@
 # 创建并启动spark集群
-sudo docker compose up
+sudo docker-compose up
 # 集群启动后，我们可以查看一下集群状态
 ```
-sudo docker compose ps
+sudo docker-compose ps
         Name                      Command               State                                                    Ports
 ----------------------------------------------------------------------
 dockerspark_master_1   /etc/bootstrap.sh bash /us ...   Up      ...
 dockerspark_worker_1   /etc/bootstrap.sh bash /us ...   Up      ...
 默认我们创建的集群包括一个master节点和一个worker节点。我们可以通过下面的命令扩容或缩容集群。
 
-sudo docker compose scale worker=2
+sudo docker-compose scale worker=2
 扩容后再次查看集群状态，此时集群变成了一个master节点和两个worker节点。
 
-sudo docker compose ps
+sudo docker-compose ps
         Name                      Command               State                                                    Ports
 ------------------------------------------------------------------------
 dockerspark_master_1   /etc/bootstrap.sh bash /us ...   Up      ...
@@ -31,5 +31,5 @@ sudo docker exec -it <container_name> /bin/bash
 ```
 停止spark集群
 ```
-sudo docker compose down
+sudo docker-compose down
 ```

@@ -1,5 +1,5 @@
 # 介绍
-idev是一个docker compose 集合，支持apollo  elk  kafka  mongo mysql nacos  postgres redis rocketmq  xxljob，php,java的一键部署。  
+idev是一个docker-compose 集合，支持apollo  elk  kafka  mongo mysql nacos  postgres redis rocketmq  xxljob，php,java的一键部署。  
 专门为测试环境快速开发设计，简化本地各种环境配置部署。   
 我将容器环境分为应用运行环境和外部依赖两个部分。 
 外部依赖如redis,mysql等这些通常一个环境公用一个就好了，不需要每个应用单独起一个，这样可以简化新项目起环境的配置。  
@@ -11,9 +11,23 @@ idev是一个docker compose 集合，支持apollo  elk  kafka  mongo mysql nacos
 docker 问题解决：
 - [https://yeasy.gitbook.io/docker_practice/appendix/faq](https://yeasy.gitbook.io/docker_practice/appendix/faq)
 - [https://walkingsun.github.io/WindBlog/2019/01/18/docker_question/#bash-ps-command-not-found](https://walkingsun.github.io/WindBlog/2019/01/18/docker_question/#bash-ps-command-not-found)
-1. 安装docker
-目前最新的docker 已经包含了docker compose，因此不需要使用docker-compose 对应命令注意是'''docker compose''' 
+git clone git@github.com:ccq18/idev.git
+2. 安装docker-compose
+```
+ubuntu:
+snap install docker
+sudo curl -L https://get.daocloud.io/docker/compose/releases/download/1.29.2/docker-compose-`uname -s`-`uname -m` -o /usr/bin/docker-compose
+sudo chmod +x /usr/bin/docker-compose
 
+macos：
+下载app 安装docker 
+sudo curl -L https://get.daocloud.io/docker/compose/releases/download/1.29.2/docker-compose-`uname -s`-`uname -m` -o /usr/bin/docker-compose
+sudo chmod +x /usr/bin/docker-compose
+
+windows：
+下载app 安装docker 
+https://github.com/docker/compose/releases
+```
 2. 环境参数
 ```
 为解决不同环境下host.docker.internal  兼容问题需要添加一个名为HOST_IP的环境变量
@@ -28,7 +42,7 @@ export HOST_IP=$(ifconfig|grep -A 5 docker0|grep netmask|awk '{print $2}')
 ```
 sh initenv.sh
 ```
-4. 启动  可以去各个目录下执行 docker compose up -d，也可以使用以下脚本一键启动所有容器（除应用环境容器java，php等），建议根据自己需要修改
+4. 启动  可以去各个目录下执行 docker-compose up -d，也可以使用以下脚本一键启动所有容器（除应用环境容器java，php等），建议根据自己需要修改
 ```
 为了避免权限问题 先初始化权限
 chmod -R 777 ./

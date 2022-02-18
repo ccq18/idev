@@ -14,13 +14,13 @@ mysql
 # 启动
 https://www.runoob.com/docker/docker-compose.html
 
-docker compose up -d  //相当于pull+build+start
-docker compose build
-docker compose pull
-docker compose start
-docker compose stop
-docker compose rm -f
-docker compose ps
+docker-compose up -d  //相当于pull+build+start
+docker-compose build
+docker-compose pull
+docker-compose start
+docker-compose stop
+docker-compose rm -f
+docker-compose ps
 
 # 常用命令
 https://www.runoob.com/docker/docker-command-manual.html

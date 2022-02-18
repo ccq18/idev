@@ -6,7 +6,7 @@ Elasticsearch or Logstash for indexing.
 
 ## Usage
 
-To include Filebeat in the stack, run Docker Compose from the root of the repository with an additional command line
+To include Filebeat in the stack, run docker-compose from the root of the repository with an additional command line
 argument referencing the `filebeat-compose.yml` file:
 
 ```console

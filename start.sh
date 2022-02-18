@@ -5,6 +5,8 @@ for projectname in apollo  elk  kafka  mongo mysql nacos  postgres redis rocketm
 do
 (
 cd $projectname;
-docker compose up -d;
+docker-compose up -d;
 )
 done
+
+
