@@ -4,6 +4,12 @@ idev是一个docker-compose 集合，支持apollo  elk  kafka  mongo mysql nacos
 我将容器环境分为应用运行环境和外部依赖两个部分。 
 外部依赖如redis,mysql等这些通常一个环境公用一个就好了，不需要每个应用单独起一个，这样可以简化新项目起环境的配置。  
 应用运行环境专为应用定制，如php,java等，你可以拷贝应用环境到自己的应用中按需修改。  
+# 脚本
+allenv 全局配置文件
+initenvbyall.py 基于全局配置文件和sample.env 初始化配置
+initenv.sh  基于 sample.env 初始化配置
+start.sh 启动全部实例
+delall.sh 删除全部实例
 # 使用
 0.由于总所周知的原因，你在国内使用docker很可能会遇到网络问题，因此我建议你在开始一切之前先设置镜像加速。    
 如果你遇到问题，以下链接可能可以帮助到你。  
@@ -15,7 +21,13 @@ git clone git@github.com:ccq18/idev.git
 2. 安装docker-compose
 ```
 ubuntu:
-snap install docker
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+
 sudo curl -L https://get.daocloud.io/docker/compose/releases/download/1.29.2/docker-compose-`uname -s`-`uname -m` -o /usr/bin/docker-compose
 sudo chmod +x /usr/bin/docker-compose
 

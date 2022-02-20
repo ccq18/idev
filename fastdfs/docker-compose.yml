@@ -6,7 +6,7 @@ services:
         image: season/fastdfs:1.2
         command: tracker
         ports:
-          - "22122:22122"
+          - "${FASTDFS_PORT}:22122"
         volumes:
           - ./tracker_data:/fastdfs/tracker/data
     fastdfs-storage:

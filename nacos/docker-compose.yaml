@@ -9,7 +9,7 @@ services:
       - ./log/:/home/nacos/logs
       - ./init.d/custom.properties:/home/nacos/init.d/custom.properties
     ports:
-      - "8848:8848"
-      - "9848:9848"
-      - "9555:9555"
+      - "${NACOS_ADMIN_PORT}:8848"
+      - "${NACOS_RPC_PORT}:9848"
+      - "${NACOS_SERVICE_PORT}:9555"
     restart: on-failure

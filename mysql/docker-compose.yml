@@ -6,7 +6,7 @@ services:
     container_name: '${PROJECT_NAME}-${MYSQL}'
     restart: 'always'
     ports:
-      - "${HOST_MACHINE_MYSQL_PORT}:3306"
+      - "${MYSQL_DB_PORT}:3306"
     volumes:
       - ${MYSQL_INITDB_DIR}:/docker-entrypoint-initdb.d
       - ${MYSQL_DATA_DIR}:/var/lib/mysql
@@ -28,7 +28,7 @@ services:
     container_name: '${PROJECT_NAME}-phpmyadmin'
     environment:
       PMA_HOST: ${HOST_IP}
-      PMA_PORT: ${HOST_MACHINE_MYSQL_PORT}
+      PMA_PORT: ${MYSQL_DB_PORT}
       PMA_USER: root
       PMA_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}

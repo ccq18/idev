@@ -4,7 +4,7 @@ services:
     image: seataio/seata-server:${SEATA_VERSION}
     hostname: seata-server
     ports:
-      - "8091:8091"
+      - "${SEATA_PORT}:8091"
     environment:
       - SEATA_PORT=8091
       - STORE_MODE=file
